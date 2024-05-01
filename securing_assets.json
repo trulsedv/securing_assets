@@ -1,0 +1,254 @@
+{
+    "access": {
+        "proton account": {
+            "type": "one",
+            "factors": {
+                "username password 2FA": {
+                    "type": "all",
+                    "factors": {
+                        "username": {
+                            "type": "one",
+                            "factors": {
+                                "username": {
+                                    "type": "knowledge",
+                                    "name": "proton username"
+                                },
+                                "password manager": {
+                                    "type": "access",
+                                    "name": "1password account"
+                                }
+                            }
+                        },
+                        "password": {
+                            "type": "one",
+                            "factors": {
+                                "password": {
+                                    "type": "knowledge",
+                                    "name": "proton password"
+                                },
+                                "password manager": {
+                                    "type": "access",
+                                    "name": "1password account"
+                                }
+                            }
+                        },
+                        "2FA": {
+                            "type": "one",
+                            "factors": {
+                                "authenticator app": {
+                                    "type": "one",
+                                    "factors": {
+                                        "authenticator app": {
+                                            "type": "access",
+                                            "name": "yubico authenticator"
+                                        },
+                                        "recovery codes": {
+                                            "type": "one",
+                                            "factors": {
+                                                "recovery codes": {
+                                                    "type": "knowledge",
+                                                    "name": "proton recovery codes"
+                                                },
+                                                "printout": {
+                                                    "type": "possesion",
+                                                    "name": "proton recovery codes, printout"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "security key (1)": {
+                                    "type": "possesion",
+                                    "name": "yubikey, main"
+                                },
+                                "security key (2)": {
+                                    "type": "possesion",
+                                    "name": "yubikey, bakcup"
+                                }
+                            }
+                        }
+                    }
+                },
+                "recovery phrase": {
+                    "type": "one",
+                    "factors": {
+                        "recovery phrase": {
+                            "type": "knowledge",
+                            "name": "proton recovery phrase"
+                        },
+                        "printout": {
+                            "type": "possesion",
+                            "name": "proton recovery phrase, printout"
+                        }
+                    }
+                },
+                "unlocked phone": {
+                    "type": "access",
+                    "name": "unlocked phone"
+                },
+                "unlocked computer (1)": {
+                    "type": "access",
+                    "name": "unlocked laptop"
+                },
+                "unlocked computer (2)": {
+                    "type": "access",
+                    "name": "unlocked desktop"
+                }
+            }
+        },
+        "1password account": {},
+        "phone number": {},
+        "unlocked phone": {
+            "type": "all",
+            "factors": {
+                "phone": {
+                    "type": "possesion",
+                    "name": "phone"
+                },
+                "pin or bio": {
+                    "type": "one",
+                    "factors": {
+                        "pin": {
+                            "type": "knowledge",
+                            "name": "phone pin"
+                        },
+                        "fingerprint": {
+                            "type": "biometric",
+                            "name": "fingerprint"
+                        }
+                    }
+                }
+                    
+            }
+        },
+        "unlocked laptop": {
+            "type": "all",
+            "factors": {
+                "computer": {
+                    "type": "possesion",
+                    "name": "laptop"
+                },
+                "pin or bio": {
+                    "type": "one",
+                    "factors": {
+                        "pin": {
+                            "type": "knowledge",
+                            "name": "computer pin"
+                        },
+                        "face": {
+                            "type": "biometric",
+                            "name": "face"
+                        }
+                    }
+                }
+            }
+        },
+        "unlocked desktop": {
+            "type": "all",
+            "factors": {
+                "computer": {
+                    "type": "possesion",
+                    "name": "desktop"
+                },
+                "pin": {
+                    "type": "knowledge",
+                    "name": "desktop password"
+                }
+                    
+            }
+        },
+        "yubico authenticator": {
+            "type": "one",
+            "factors": {
+                "security key (1)": {
+                    "type": "possesion",
+                    "name": "yubikey, main"
+                },
+                "security key (2)": {
+                    "type": "possesion",
+                    "name": "yubikey, bakcup"
+                }
+            }
+        }
+    },
+    "knowledge": {
+        "proton username": {
+            "complexity": 5,
+            "usage": 5
+        },
+        "proton password": {
+            "complexity": 50,
+            "usage": 5
+        },
+        "proton recovery codes": {
+            "complexity": 50,
+            "usage": 100
+        },
+        "proton recovery phrase": {
+            "complexity": 100,
+            "usage": 100
+        },
+        "phone pin": {
+            "complexity": 5,
+            "usage": 5
+        },
+        "computer pin": {
+            "complexity": 5,
+            "usage": 5
+        },
+        "desktop password": {
+            "complexity": 20,
+            "usage": 5
+        }
+    },
+    "possesion": {
+        "proton recovery codes, printout": {
+            "location": "home",
+            "secrecy": 50
+        },
+        "proton recovery phrase, printout": {
+            "location": "home",
+            "secrecy": 50
+        },
+        "yubikey, main": {
+            "location": "pocket",
+            "secrecy": 5
+        },
+        "yubikey, bakcup": {
+            "location": "home",
+            "secrecy": 50
+        },
+        "phone": {
+            "location": "pocket",
+            "secrecy": 5
+        },
+        "laptop": {
+            "location": "home",
+            "secrecy": 5
+        },
+        "desktop": {
+            "location": "home",
+            "secrecy": 5
+        }
+    },
+    "biometric": {
+        "fingerprint": {
+            "unknown": 100,
+            "known": 50
+        },
+        "face": {
+            "unknown": 100,
+            "known": 50
+        }
+    },
+    "physical protection": {
+        "home": {
+            "unknown": 100,
+            "known": 50
+        },
+        "pocket": {
+            "unknown": 50,
+            "known": 10
+        }
+    }
+}
